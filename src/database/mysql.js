@@ -39,3 +39,41 @@ const mysqlConxion = async () => {
     }
 
 }
+
+mysqlConxion();
+
+export const Todo = async (Tabla) => {
+    try {
+        const [result] = await conexion.query(`SELECT * FROM ${Tabla}`);
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const Uno = async (Tabla,columnaId,id) => {
+    try {
+        const [result] = await conexion.query(`SELECT * FROM ${Tabla} WHERE ${columnaId} = ?`,[id]);
+        return result[0];
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const Agregar = async (Tabla,data) => {
+    try {
+        const [result] = await conexion.query(`INSERT INTO ${Tabla} SET ?`,[data]);
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const Delete = async (Tabla,columnaId,id) => {
+    try {
+        const [result] = await conexion.query(`DELETE FROM ${Tabla} WHERE ${columnaId} = ?`,[id]);
+        return result[0];
+    } catch (error) {
+        console.log(error);
+    }
+}
