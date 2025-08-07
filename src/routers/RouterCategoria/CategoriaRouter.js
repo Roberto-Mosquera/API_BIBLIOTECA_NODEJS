@@ -1,16 +1,19 @@
 import express from 'express';
 
-import { success,error } from "./../../utils/response.js";
+import { success,error, successVoid } from "./../../utils/response.js";
 
-import { CategoriaController } from "./../../controller/CategoriaController.js";
+import { CategoriaService } from "../../Service/CategoriaService.js";
+
+import { CategoriaNombreRequest } from '../../dto/Request/CategoriaNombreRequest.js';
+import { CategoriaMapper } from '../../mapper/CategoriaMapper.js';
 
 const Router = express.Router();
 
-const Controlador = new CategoriaController();
+const Service = new CategoriaService();
 
 const EndPointListaCategoria = async (req,res) => {
     try {
-        const ListaCategorias = await Controlador.TraerListaCategoria();
+        const ListaCategorias = await Service.TraerListaCategoria();
         success(
             req,
             res,
@@ -25,7 +28,9 @@ const EndPointListaCategoria = async (req,res) => {
 
 const EndPointListaCategoriaPorNombre = async (req,res) => {
     try {
-        const ListaCategorias = await Controlador.TraerListaPorNombreCategoria();
+
+        const ListaCategorias = await Service.TraerListaPorNombreCategoria();
+
         success(
             req,
             res,
@@ -33,25 +38,31 @@ const EndPointListaCategoriaPorNombre = async (req,res) => {
             200,
             ListaCategorias
         );
+
     } catch (err) {
         error(req,res,"Error en el EndPointListaCategoria",404);
     }
 }
 
 const EndPointAgregarCategoria = async (req,res) => {
-        try {
-        const categoriaNueva = await Controlador.AgregarCategoria(req.body);
-        success(
+    try {
+
+        const categoriaPost = CategoriaMapper.toCategoriaNombreRequest(req.body);
+
+        await Service.AgregarCategoria(categoriaPost);
+
+        successVoid(
             req,
             res,
-            "Se agrego una nueva categoria",
-            200,
-            categoriaNueva
+            "Se agrego correctamente una categoria",
+            200
         );
-    } catch (error) {
+
+    } catch (err) {
         error(req,res,"Error en el EndPointAgregarCategoria",404);
     }
 }
+
 Router.get("/ListCategoria",EndPointListaCategoria);
 Router.get("/ListCategoria/Por/Nombre",EndPointListaCategoriaPorNombre);
 Router.post("/AgregarCategoruia",EndPointAgregarCategoria);

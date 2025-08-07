@@ -1,6 +1,6 @@
 export class Categoria{
-    constructor(id,nombre_categoria){
-        this.id = id;
-        this.nombre_categoria = nombre_categoria
+    constructor(id_categoria,nombre_categoria){
+        this.id_categoria = id_categoria;
+        this.nombre_categoria = nombre_categoria;
     }
 }
