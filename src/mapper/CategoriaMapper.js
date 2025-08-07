@@ -1,6 +1,6 @@
-import { CategoriaNombreRequest } from "../dto/Request/CategoriaNombreRequest";
-import { CategoriaNombreResponse } from "../dto/Response/CategoriaNombreResponse";
-import { Categoria } from "../model/Categoria";
+import { CategoriaNombreRequest } from "../dto/Request/CategoriaNombreRequest.js";
+import { CategoriaNombreResponse } from "../dto/Response/CategoriaNombreResponse.js";
+import { Categoria } from "../model/Categoria.js";
 export class CategoriaMapper{
 
     static toListaCategoria(ListaEntity){

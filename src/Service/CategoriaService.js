@@ -2,7 +2,6 @@ import { CategoriaRepository } from "../repository/CategoriaRepository.js";
 import { CategoriaMapper } from "../mapper/CategoriaMapper.js"; 
 
 export class CategoriaService{
-    
     #Repository
     constructor(){
         this.#Repository = new CategoriaRepository();
