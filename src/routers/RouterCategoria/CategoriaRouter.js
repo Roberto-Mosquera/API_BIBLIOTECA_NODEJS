@@ -54,5 +54,5 @@ const EndPointAgregarCategoria = async (req,res) => {
 
 Router.get("/ListCategoria",EndPointListaCategoria);
 Router.get("/ListCategoria/Por/Nombre",EndPointListaCategoriaPorNombre);
-Router.post("/AgregarCategoruia",EndPointAgregarCategoria);
+Router.post("/AgregarCategoria",EndPointAgregarCategoria);
 export default Router;

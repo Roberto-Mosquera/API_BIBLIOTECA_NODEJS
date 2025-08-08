@@ -1,4 +1,4 @@
-SELECT * FROM categoria;
+SELECT * FROM libro;
 DELETE FROM categoria WHERE id_categoria = 2;
 SHOW TABLES;
 DESCRIBE cliente;

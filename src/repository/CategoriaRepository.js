@@ -1,4 +1,4 @@
-import {Todo,Uno,Agregar,Eliminar,TodoPerzonalizado} from './../database/mysql.js';
+import {Todo,Uno,Agregar,TodoPerzonalizado} from './../database/mysql.js';
 
 export class CategoriaRepository{
     
@@ -27,7 +27,7 @@ export class CategoriaRepository{
 
     async AgregarCategoria(Data){
         try {
-            return await Agregar(this.#Tabla,Data);
+            await Agregar(this.#Tabla,Data);
         } catch (error) {
             console.log(error);
         }

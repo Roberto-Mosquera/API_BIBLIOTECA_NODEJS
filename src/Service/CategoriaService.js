@@ -30,7 +30,7 @@ export class CategoriaService{
     async AgregarCategoria(categoria){
         try {
             const entityCategoria = CategoriaMapper.toCategoriaEntity(categoria);
-            return await this.#Repository.AgregarCategoria(entityCategoria);
+            await this.#Repository.AgregarCategoria(entityCategoria);
         } catch (error) {
             console.log("[Error en TraerListaCategoria]:",error);
         }
